@@ -1,13 +1,9 @@
 <template>
 	<view>
+		<zhi-hu v-if="curPage==1"></zhi-hu>
 		
 		
-		<view class="content">
-			<image class="logo" src="/static/logo.png"></image>
-			<view class="text-area">
-				<text class="title">{{title}}</text>
-			</view>
-		</view>
+		
 		<view class="tabbar">
 			<view class="row-container">
 				<image v-if="curPage==1" class="icon" @click="clickIcon(1)" src="../../static/zhihu/tabbar/index_blue.svg"></image>
@@ -31,12 +27,16 @@
 </template>
 
 <script>
+	import zhihu from '../zhihu/zhihu.vue'
 	export default {
+		components:{
+			'zhi-hu':zhihu
+		},
 		data() {
 			return {
 				title: '45454',
 				width:45,
-				curPage:0,
+				curPage:1,
 			}
 		},
 		onLoad() {
@@ -63,7 +63,10 @@
 		height: 80vh
 	}
 	.tabbar{
+		position: fixed;
+		bottom: 0;
 		display: flex;
+		width: 100vw;
 		justify-content: space-around;
 		height: 10vh;
 		background-color: #8f8f94;
